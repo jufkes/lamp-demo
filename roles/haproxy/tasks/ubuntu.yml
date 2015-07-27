@@ -1,0 +1,17 @@
+---
+
+- name: Download and install haproxy and socat
+  apt: name={{ item }} state=present
+  with_items:
+  - haproxy
+  - socat
+
+- name: Configure the haproxy cnf file with hosts
+  template: src=haproxy.cfg.j2 dest=/etc/haproxy/haproxy.cfg
+  notify: restart haproxy
+
+- name: Ensure that haproxy is enabled on Ubuntu
+  replace: dest=/etc/default/haproxy regexp="ENABLED=0" replace='ENABLED=1'
+
+- name: Start the haproxy service
+  service: name=haproxy state=started enabled=yes

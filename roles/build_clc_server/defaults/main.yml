@@ -1,0 +1,7 @@
+public_key: "{{ lookup('file', './keys/ssh-rsa-key.pub') }}"
+group_size: 1
+type: standard
+storage_type: standard
+cpu: 1
+memory: 2
+datacenter: 'UC1'

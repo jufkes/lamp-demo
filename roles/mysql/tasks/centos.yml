@@ -1,0 +1,70 @@
+---
+- name: Install mysql and deps
+  yum:
+    name: "{{ item }}"
+    state: present
+  with_items: packages
+  tags: mysql
+
+- name: Make a mysql directory
+  file:
+    name: /etc/mysql/conf.d
+    state: directory
+  tags: mysql
+
+- name: start mysqld
+  service: 
+    name: "{{ mysql_service }}"
+    state: started 
+    enabled: true
+  tags: mysql
+
+- name: Update root password
+  mysql_user:
+    name: root
+    host: "{{ item }}"
+    password: "{{ mysql_root_password }}"
+    state: present
+  with_items:
+    - 127.0.0.1
+    - ::1
+    - localhost
+  tags: mysql
+
+- name: Build and place the my.cnf
+  template: 
+    src: my.cnf.j2
+    dest: /etc/my.cnf
+  notify:
+    - restart mysql
+  tags: mysql
+
+- name: Remove the test database
+  mysql_db:
+    name: test
+    state: absent
+  tags: mysql
+
+- name: Remove anonymous users
+  mysql_user:
+    name: ''
+    host: "{{ item }}"
+    state: absent
+  with_items:
+    - localhost
+    - "{{ ansible_hostname }}"
+  tags: mysql
+
+- name: Create the databases
+  mysql_db:
+    name: lamp
+    state: present
+  tags: mysql
+
+- name: Create the users
+  mysql_user:
+    name: "{{ lampuser }}"
+    password: "{{ lamppass }}"
+    priv: '*.*:ALL,GRANT'
+    state: present
+  tags: mysql

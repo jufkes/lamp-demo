@@ -1,0 +1,14 @@
+---
+
+- name: Install Epel Repo when OS is Centos
+  yum: name=epel-release
+
+- name: Install HAProxy when OS is Centos
+  yum: name=haproxy
+
+- name: Configure the haproxy cnf file with hosts
+  template: src=haproxy.cfg.j2 dest=/etc/haproxy/haproxy.cfg
+  notify: restart haproxy
+
+- name: Start the haproxy service
+  service: name=haproxy state=started enabled=yes

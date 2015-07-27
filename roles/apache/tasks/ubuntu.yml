@@ -1,0 +1,57 @@
+---
+- name: Create conf.modules.d directory
+  file:
+    name: /etc/httpd/conf.modules.d
+    state: directory
+
+- name: Ensure Apache is installed
+  apt:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - apache2  
+    - libapache2-mod-php5 
+  tags: httpd
+
+- name: Install PHP support if needed
+  apt:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - php
+    - php-xml
+    - php5-gd
+    - libssh2-php
+    - php5-curl 
+    - php5
+  when: httpd_scripting is defined and httpd_scripting == "php"
+  tags: httpd
+
+- name: Ensure Apache is always running
+  service:
+    name: httpd
+    state: started
+    enabled: yes
+  tags: httpd
+
+#- name: Install main configuration file
+#  template:
+#    src: httpd.conf.j2
+#    dest: /etc/httpd/conf/httpd.conf
+#    owner: "{{ apache_owner }}"
+#    group: "{{ apache_group }}"
+#    setype: httpd_config_t
+#    mode: '0644'
+#  notify: restart httpd
+#  tags: httpd
+
+#- name: Install mod_ssl configuration file
+#  template:
+#    src: ssl.conf.j2
+#    dest: /etc/httpd/conf.d/ssl.conf
+#    owner: "{{ apache_owner }}"
+#    group: "{{ apache_group }}"
+#    setype: httpd_config_t
+#    mode: '0644'
+#  notify: restart httpd
+#  tags: httpd
