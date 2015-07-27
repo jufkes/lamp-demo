@@ -80,7 +80,6 @@
     name={{ item.name }}
     ansible_ssh_host={{ item.ipaddress }}
     ansible_ssh_user=root
-    ansible_ssh_private_key_file={{ default_ssh_key_path }}
     groupname=LAMP
   with_items: lamp.servers
 
@@ -89,6 +88,5 @@
     name={{ item.name }}
     ansible_ssh_host={{ item.ipaddress }}
     ansible_ssh_user=root
-    ansible_ssh_private_key_file={{ default_ssh_key_path }}
     groupname=HAPROXY
   with_items: haproxy.servers
