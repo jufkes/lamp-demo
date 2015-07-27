@@ -3,5 +3,5 @@
 - include: servers.yml
 - include: mysql.yml
 - include: apache.yml
-- include: content.yml
+#- include: content.yml
 - include: haproxy.yml
