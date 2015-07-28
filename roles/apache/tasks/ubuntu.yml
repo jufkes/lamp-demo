@@ -20,6 +20,7 @@
   with_items:
     - php
     - php-xml
+    - php-mylql
     - php5-gd
     - libssh2-php
     - php5-curl 
