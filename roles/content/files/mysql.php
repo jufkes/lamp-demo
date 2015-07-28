@@ -6,7 +6,7 @@
 <p><b><font size="14">PHP STATUS PAGE!</font></b></p>
 <p><font size="6">The Virtual Machine is up and running! Here's some other useful stuff"</font></p>
 <p><b><font size="6">System Information</font></b></p>
- <?php echo
+<?php echo
 $link   = mysql_connect('localhost', 'lamp', 'lamp') or
   die('Could not connect: ' . mysql_error());
 ob_start();
