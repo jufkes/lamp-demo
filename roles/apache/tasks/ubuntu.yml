@@ -21,11 +21,8 @@
     - php
     - php-xml
     - php-mylql
-    - php5-gd
-    - libssh2-php
     - php5-curl 
     - php5
-  when: httpd_scripting is defined and httpd_scripting == "php"
   tags: httpd
 
 - name: Ensure Apache is always running

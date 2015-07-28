@@ -70,7 +70,7 @@
 - name: Setup replicaton on the slave
   mysql_replication: 
     mode: changemaster
-    master_host: "{{ hostvars[groups['LANP'][0]]['ansible_eth0']['ipv4']['address'] }}"
+    master_host: "{{ hostvars[groups['LAMP'][0]]['ansible_eth0']['ipv4']['address'] }}"
     master_user: replicator
     master_password: "{{ mysql_password }}"
   when: check_sql_path.stat.exists == false and ansible_eth0.ipv4.address == "{{ hostvars[groups['LAMP'][1]]['ansible_eth0']['ipv4']['address'] }}"
