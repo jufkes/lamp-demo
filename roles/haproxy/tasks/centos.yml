@@ -1,9 +1,9 @@
 ---
 
-- name: Install Epel Repo when OS is Centos
+- name: Install Epel Repo
   yum: name=epel-release
 
-- name: Install HAProxy when OS is Centos
+- name: Install HAProxy
   yum: name=haproxy
 
 - name: Configure the haproxy cnf file with hosts
