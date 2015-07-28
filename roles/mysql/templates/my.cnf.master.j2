@@ -24,10 +24,10 @@ innodb_log_file_size=16M
 
 # flush binary logs on commits. 
 innodb_flush_log_at_trx_commit=1
-#binlog_format=MIXED
+binlog_format=MIXED
 
-#max_binlog_size=500M
-#expire_logs_days=10
+max_binlog_size=500M
+expire_logs_days=10
 # 5 gigs of binary logs, at most. Probably less.
 # And sync it too, so that the logs and the files and any remote systems are all
 # in agreement. Its a performance hit for reliability.
@@ -47,22 +47,22 @@ slow_query_log=1
 
 # Uncommment log-bin, log-slave-update and log_bin_trust_function_creators
 # if a clustered db server
-#log-bin=/var/lib/mysql/{{ mysql_database }}
-#log_bin_trust_function_creators=1
-#log-slave-update
+log-bin=/var/lib/mysql/{{ mysql_database }}
+log_bin_trust_function_creators=1
+log-slave-update
 # uncomment the next item on 1st db master server
-#server-id=1
+server-id={{ master_id }}
 # uncomment the next item on 2nd db master servers
 #server-id=2
-#relay-log = /var/lib/mysql/{{ mysql_database  }}-bin
-#relay-log-index = /var/lib/mysql/{{ mysql_database  }}-bin.index
-#relay-log-info-file = /var/lib/mysql/{{ mysql_database  }}-bin.info
+relay-log = /var/lib/mysql/{{ mysql_database  }}-bin
+relay-log-index = /var/lib/mysql/{{ mysql_database  }}-bin.index
+relay-log-info-file = /var/lib/mysql/{{ mysql_database  }}-bin.info
 
 # Slave reliability items:
-#slave-skip-errors=126,1053,1105,1129,1158,1159,1160,1161
-#slave_compressed_protocol=1
-#slave-net-timeout=30
-#slave_exec_mode=IDEMPOTENT
+slave-skip-errors=126,1053,1105,1129,1158,1159,1160,1161
+slave_compressed_protocol=1
+slave-net-timeout=30
+slave_exec_mode=IDEMPOTENT
 
 # Two months of logs rollover. Its not size dependent.
 # This opens up the risk of having failed replication for 62 days.

@@ -1,20 +1,23 @@
 ---
 
-mysql_databases: []
-mysql_users: []
-mysql_root_password: ''
-
-mysql_bind_address: '127.0.0.1'
-
-lampuser: lamp
-lamppass: lamp
-
 packages:
   - mysql
   - mysql-server
   - MySQL-python
   - vim
+
+mysql_databases: []
+mysql_users: []
+mysql_root_password: ''
+mysql_bind_address: '127.0.0.1'
+
+lampuser: lamp
+lamppass: lamp
+
 mysql_service: mysqld
 mysql_user: lamp
 mysql_database: lamp
 mysql_password: lamp
+master_ip: "{{ hostvars[groups['LAMP'][0]]['ansible_eth0']['ipv4']['address'] }}"
+master_id: 1
+slave_id: 2
