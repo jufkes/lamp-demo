@@ -99,6 +99,6 @@
     state: present
   tags: mysql
 
-  - name: Set the guard file for subsequent runs
+- name: Set the guard file for subsequent runs
   command: touch /etc/mysql/ansible.repl
   when: check_sql_path.stat.exists == false
