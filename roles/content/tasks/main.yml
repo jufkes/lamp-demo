@@ -5,9 +5,8 @@
     src: "{{ item }}"
     dest: "/var/www/html/"
   with_items: 
-    - system_out.php
     - mysql.php
-    - test.php
+    - system_out.php
   notify: restart httpd
   tags:
     - content
