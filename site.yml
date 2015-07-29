@@ -1,5 +1,4 @@
 ---
-
 - include: servers.yml
 - include: mysql.yml
 - include: apache.yml

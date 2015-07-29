@@ -7,7 +7,6 @@
   with_items: 
     - system_out.php
     - mysql.php
-    - test.php
   notify: restart httpd
   tags:
     - content
