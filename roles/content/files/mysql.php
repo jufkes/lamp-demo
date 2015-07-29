@@ -24,5 +24,6 @@ echo 'OTHER: '.$info.' <br />';
 <p><b><font size="6">Installed Software</font></b></p>
 
 <p><b><font size="6">PHP Modules</font></b></p>
+<p><b><font size="6">BOOM!!</font></b></p>
  </body>
 </html>
