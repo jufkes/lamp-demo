@@ -4,4 +4,4 @@ type: standard
 storage_type: standard
 cpu: 1
 memory: 2
-datacenter: 'UC1'
+datacenter: 'VA1'

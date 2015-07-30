@@ -72,6 +72,7 @@ echo 'OTHER: '.$info.' <br />';
                     <td><?php echo phpversion(); ?></td>
                 </tr>
 
+<<<<<<< HEAD
                 <tr>
                     <td>MySQL running</td>
                     <td><i class="icon-<?php echo ($mysql_running ? 'ok' : 'remove'); ?>"></i></td>
@@ -123,5 +124,7 @@ echo 'OTHER: '.$info.' <br />';
                 </tr>
             </table>
 </p>
+=======
+<p><b><font size="6">PHP Modules</font></b></p>
  </body>
 </html>
