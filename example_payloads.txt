@@ -1,0 +1,48 @@
+Build a solution with public github in the VA1 datacenter under account alias 'wfad':
+
+{
+    "callbacks": ["htt://yourwebhook.url.com"],
+    "accountAlias": "wfad",
+    "description": "Provision a LAMP stack for funsies",
+    "repository": {
+        "url": "https://github.com/jufkes/lamp-demo.git",
+        "ref":"master",
+        "defaultPlaybook": "site.yml"
+    },
+    "hosts": [
+        {
+            "hostvars": {"ansible_connection": "local", "datacenter": "VA1", "ansible_ssh_user": "root"},
+            "id": "localhost"
+        }
+    ],
+    "sshPrivateKey", "base64 encoded key",
+    "properties":{"datacenter":"VA1"},
+    "status": "ACTIVE"
+}
+
+Build a solution with private github in the VA1 datacenter under account alias 'wfad':
+
+{
+    "callbacks": ["htt://yourwebhook.url.com"],
+    "accountAlias": "wfad",
+    "description": "Provision a LAMP stack for funsies",
+    "repository": {
+        "url": "https://github.com/jufkes/lamp-demo.git",
+        "ref":"master",
+	"credentials": {
+          	"username": "your.username",
+		"password": "password_to_your_username"
+        },
+        "defaultPlaybook": "site.yml"
+    },
+    "hosts": [
+        {   
+            "hostvars": {"ansible_connection": "local", "datacenter": "VA1", "ansible_ssh_user": "root"},
+            "id": "localhost"
+        }
+    ],
+    "sshPrivateKey", "base64 encoded key",
+    "properties":{"datacenter":"VA1"},
+    "status": "ACTIVE"
+}
+
