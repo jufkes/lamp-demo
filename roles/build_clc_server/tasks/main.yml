@@ -45,13 +45,13 @@
     storage_type: "{{ storage_type }}"
   register: haproxy
 
-#- name: CLC | Add public ipaddress
-#  clc_publicip:
-#    server_ids: "{{ item.name }}"
-#    ports:
-#      - "80"
-#    state: present
-#  with_flattened: haproxy.servers
+- name: CLC | Add public ipaddress
+  clc_publicip:
+    server_ids: "{{ item.name }}"
+    ports:
+      - "80"
+    state: present
+  with_flattened: haproxy.servers
 
 - name: Wait for SSH to Come up on New Servers
   wait_for: host={{ item.ipaddress }} port=22 delay=5 timeout=320 state=started
