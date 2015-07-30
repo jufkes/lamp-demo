@@ -1,5 +1,4 @@
-- name: Install Haproxy
-  hosts: HAPROXY
+- hosts: HAPROXY
   sudo: yes
   roles:
     - haproxy
